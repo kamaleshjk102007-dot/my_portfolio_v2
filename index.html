@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Animation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400;500;600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=skills-frame-30" />
+  </head>
+  <body>
+    <canvas id="sequence" aria-label="Scroll-controlled animation"></canvas>
+    <nav class="dynamic-nav" aria-label="Primary navigation">
+      <div class="dynamic-nav__pill">
+        <a class="dynamic-nav__logo" href="#home" data-panel="0" aria-label="Go to home">KJ</a>
+        <div class="dynamic-nav__links" id="dynamic-nav-menu">
+          <a href="#home" data-panel="0">Home</a><a href="#about" data-panel="1">About</a><a href="#skills" data-panel="3">Skills</a><a href="#projects" data-panel="4">Projects</a><a href="#certificates" data-panel="8">Certificates</a><a href="#contact" data-panel="11">Contact</a>
+        </div>
+        <button class="dynamic-nav__eyes" type="button" aria-expanded="false" aria-controls="dynamic-nav-menu" aria-label="Open navigation">
+          <span class="eye"><i class="pupil"></i></span><span class="eye"><i class="pupil"></i></span>
+        </button>
+      </div>
+      <a class="dynamic-nav__status" href="#contact" data-panel="11"><i></i>Open to opportunities</a>
+    </nav>
+    <main class="content" aria-label="Portfolio introduction">
+      <section class="panel panel--intro" id="home" data-start="-0.03" data-end="0.09">
+        <div class="eyebrow">
+          <p class="availability">Available for projects <i>+</i></p>
+        </div>
+        <div class="panel__left">
+          <p class="script">Hello, I’m</p>
+          <h1><span class="name">Kamalesh J</span><span class="role">AI &amp; Data<br />Science</span></h1>
+          <p class="description">I build practical AI and data-driven solutions that turn real-world problems into intelligent, meaningful experiences.</p>
+          <p class="location"><i>©</i> Based in India</p>
+          <div class="hero-actions" aria-label="Portfolio actions">
+            <div class="hero-actions__primary">
+              <a class="hero-cta hero-cta--filled" href="#projects" data-panel="4"><span class="hero-cta__label">View Work</span><span class="hero-cta__icon" aria-hidden="true">→</span></a>
+              <a class="hero-cta hero-cta--outline" href="#contact" data-panel="11"><span class="hero-cta__label">Contact</span><span class="hero-cta__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3.75 5.75h16.5v12.5H3.75zM4.5 6.5 12 12l7.5-5.5"/></svg></span>
+              </a>
+            </div>
+            <div class="hero-socials" aria-label="Social links">
+              <a href="https://github.com/kamaleshjk102007-dot" target="_blank" rel="noopener noreferrer" aria-label="Open Kamalesh J on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.93c.46.08.63-.2.63-.44v-1.72c-2.57.56-3.11-1.09-3.11-1.09-.42-1.07-1.03-1.35-1.03-1.35-.84-.57.06-.56.06-.56.93.07 1.42.96 1.42.96.83 1.42 2.17 1.01 2.7.77.08-.6.32-1.01.59-1.24-2.05-.23-4.21-1.03-4.21-4.57 0-1.01.36-1.84.95-2.49-.1-.23-.41-1.18.09-2.45 0 0 .78-.25 2.53.95A8.8 8.8 0 0 1 12 7.19c.78 0 1.55.1 2.29.31 1.76-1.2 2.53-.95 2.53-.95.5 1.27.19 2.22.09 2.45.59.65.95 1.48.95 2.49 0 3.55-2.16 4.33-4.22 4.56.33.29.63.85.63 1.72v2.52c0 .24.16.53.64.44A9.2 9.2 0 0 0 12 2.8Z"/></svg></a>
+              <a href="https://www.linkedin.com/in/kamalesh-j-b48421336/" target="_blank" rel="noopener noreferrer" aria-label="Open Kamalesh J on LinkedIn" title="LinkedIn"><svg class="social-icon--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.54 8.35H3.12V19h3.42V8.35ZM4.83 3A1.98 1.98 0 1 0 4.83 6.96 1.98 1.98 0 0 0 4.83 3ZM19.88 12.9c0-3.2-1.71-4.69-4-4.69-1.84 0-2.67 1.01-3.13 1.73V8.35H9.33V19h3.42v-5.27c0-1.39.26-2.73 1.98-2.73 1.69 0 1.71 1.58 1.71 2.82V19h3.42l.02-6.1Z"/></svg></a>
+              <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=kamaleshjk102007%40gmail.com&amp;su=Portfolio%20Enquiry" target="_blank" rel="noopener noreferrer" aria-label="Compose an email to Kamalesh J" title="Email Kamalesh J"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6h17v12h-17zM4.2 6.8 12 12.5l7.8-5.7"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="panel__right">
+          <p class="statement"><i>+</i> Turning ideas into<br />intelligent solutions.</p>
+          <ul>
+            <li>Artificial Intelligence</li>
+            <li>Machine Learning</li>
+            <li>Computer Vision</li>
+            <li>Data-Driven Systems</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="panel panel--about" id="about" data-start="0.07" data-end="0.16">
+        <div class="panel__left about-heading">
+          <p class="section-number">01 / About</p>
+          <h2><span>About</span><em class="signature-script">Me</em></h2>
+          <p class="about-heading__note"><span></span>Learning fast. Building things that matter.</p>
+        </div>
+        <div class="about-story">
+          <p class="about-story__lead">I’m <strong>Kamalesh J</strong>, a third-year <strong>Artificial Intelligence &amp; Data Science</strong> student passionate about turning ideas into practical technology.</p>
+          <i class="about-story__rule"></i>
+          <div class="about-story__details">
+            <p class="about-story__body">My work focuses on <strong>Artificial Intelligence, Machine Learning, Computer Vision,</strong> and <strong>Data Analytics</strong>, with an emphasis on building systems that solve real-world problems. I enjoy taking an idea from concept to implementation—experimenting with models, developing applications, working with data, and continuously improving the result.</p>
+            <p class="about-story__body">Through projects, internships, hackathons, and hands-on learning, I’m building a strong foundation in both <strong>AI and software development</strong> while exploring how intelligent systems can create meaningful impact.</p>
+          </div>
+          <blockquote class="about-belief"><b aria-hidden="true">“</b><p>I don’t just learn technology —<strong>I build with it.</strong></p></blockquote>
+        </div>
+      </section>
+
+      <section class="panel journey-panel" data-start="0.14" data-end="0.30">
+        <p class="journey-label">03 / Journey</p>
+        <h2 class="journey-title"><span>Learning by</span><em class="signature-script">doing.</em></h2>
+        <div class="journey-timeline">
+          <article class="journey-entry">
+            <div class="journey-date">2024 — Present</div>
+            <div class="journey-copy"><p class="journey-type">Education</p><h3>Bachelor of Technology · Artificial Intelligence and Data Science</h3><p>Institution: Sri Shakthi Institute of Engineering and Technology · Current year: Third Year · Location: Coimbatore, Tamil Nadu</p></div>
+          </article>
+          <article class="journey-entry">
+            <div class="journey-date">June 2026 — July 2026</div>
+            <div class="journey-copy"><p class="journey-type">Experience</p><h3>Data Analytics Intern · Thiranex</h3><p>Data cleaning and preparation · Interactive dashboard development · Business-data analysis · Data visualization · Report creation · Identifying useful insights from datasets</p><div class="journey-tags"><span>Python</span><span>Power BI</span><span>Microsoft Excel</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel detail-panel skills-panel" id="skills" data-start="0.28" data-end="0.39">
+        <header class="page-head"><span>04</span><p>Skills</p></header>
+        <div class="skills-intro"><p>04 / SKILLS EXPERTISE</p><h2>Skills That<br /><em class="signature-script">Build Solutions</em></h2><span>A blend of technical expertise, problem-solving ability, and curiosity for building data-driven, intelligent experiences.</span></div>
+        <section class="skill-console" aria-label="Technical skill explorer">
+          <div class="skill-console__tabs" role="tablist" aria-label="Skill categories">
+            <button type="button" role="tab" data-skill-index="0"><small>01</small>Programming</button><button type="button" role="tab" data-skill-index="1"><small>02</small>Artificial Intelligence</button><button type="button" role="tab" data-skill-index="2"><small>03</small>Frameworks &amp; Development</button><button type="button" role="tab" data-skill-index="3"><small>04</small>Databases</button><button type="button" role="tab" data-skill-index="4"><small>05</small>Data Analytics</button><button type="button" role="tab" data-skill-index="5"><small>06</small>Development Tools</button>
+          </div>
+          <article class="skill-console__detail" role="tabpanel" aria-live="polite"></article>
+        </section>
+      </section>
+
+      <section class="panel detail-panel project-panel" id="projects" data-start="0.37" data-end="0.47">
+        <header class="page-head"><span>05</span><p>ShopFloor AI</p></header>
+        <div class="detail-title"><p class="kicker">AI-Powered Workforce Management Platform</p><h2>ShopFloor<br /><em>AI</em></h2><p class="project-summary">ShopFloor AI is an intelligent workforce and production-management platform designed to improve employee tracking, sales-order management, reporting, and shop-floor operations.</p><a class="featured-repo-button" href="https://github.com/kamaleshjk102007-dot/shop_floor" target="_blank" rel="noopener noreferrer" aria-label="Open ShopFloor AI repository on GitHub"><span>View Repository</span><i aria-hidden="true">↗</i></a></div>
+        <div class="detail-body project-dossier">
+          <figure class="project-dossier__visual"><img src="assets/shopfloor-ai-showcase.png" alt="ShopFloor AI workforce operations dashboard concept" /><figcaption><span>FEATURED BUILD / 01</span><b>Operations, connected from order to output.</b></figcaption></figure>
+          <div class="project-dossier__copy"><p class="project-dossier__lead">A connected operations workspace that brings order intake, workforce activity, individual timers, reporting, and analytics into one clear system—helping teams move from live shop-floor signals to informed action.</p><div class="project-dossier__columns"><div><h3>Key features</h3><ul><li>AI voice assistant</li><li>Sales-order management</li><li>Employee tracking &amp; timers</li><li>Analytics &amp; automated reports</li><li>Offline synchronization</li></ul></div><div><h3>Technologies</h3><div class="tags"><span>Flutter</span><span>Gemini</span><span>MongoDB</span><span>SQLite</span><span>Node.js</span></div></div></div></div>
+        </div>
+      </section>
+
+      <section class="panel detail-panel project-panel" data-start="0.45" data-end="0.55">
+        <header class="page-head"><span>06</span><p>EDITH</p></header>
+        <div class="detail-title"><p class="kicker">Multi-Agent AI Assistant</p><h2>EDITH</h2><p class="project-summary">EDITH is an intelligent multi-agent assistant designed to automate tasks through specialized AI agents and an extensible plugin system.</p><a class="featured-repo-button" href="https://github.com/kamaleshjk102007-dot/edith" target="_blank" rel="noopener noreferrer" aria-label="Open EDITH repository on GitHub"><span>View Repository</span><i aria-hidden="true">↗</i></a></div>
+        <div class="detail-body project-dossier">
+          <figure class="project-dossier__visual"><img src="assets/edith-ai-showcase.png" alt="EDITH multi-agent AI orchestration interface concept" /><figcaption><span>FEATURED BUILD / 02</span><b>One assistant. A coordinated team of agents.</b></figcaption></figure>
+          <div class="project-dossier__copy"><p class="project-dossier__lead">EDITH coordinates specialized agents through one assistant layer, routing each request to the right capability while keeping voice interaction, plugins, provider fallback, monitoring, and recovery inside a single extensible workflow.</p><div class="project-dossier__columns"><div><h3>Key features</h3><ul><li>Specialized AI agents</li><li>Task automation &amp; plugins</li><li>Voice interaction</li><li>Self-healing capabilities</li><li>Multi-provider integration</li></ul></div><div><h3>Technologies</h3><div class="tags"><span>Python</span><span>React</span><span>Gemini</span><span>Groq</span><span>OpenRouter</span></div></div></div></div>
+        </div>
+      </section>
+
+      <section class="panel detail-panel projects-panel" data-start="0.53" data-end="0.65">
+        <header class="page-head"><span>07</span><p>Other Projects</p></header>
+        <div class="wide-title project-section-title"><h2>Featured Projects</h2><span>11</span></div>
+        <div class="project-carousel"><div class="project-grid"><article><b>01</b><h3>SentinelEye V1</h3><p>A lightweight online exam-monitoring prototype using YOLOv8 and webcam processing to detect suspicious objects and behaviours with sustained-violation alerts.</p></article><article><b>02</b><h3>SentinelEye V2</h3><p>An advanced AI proctoring platform combining YOLOv11, MediaPipe, ByteTrack, FastAPI, MongoDB, live dashboards, risk assessment, and automated reporting.</p></article><article><b>03</b><h3>EDITH AI</h3><p>A desktop AI assistant integrating Gemini, Groq, OpenRouter, voice interaction, document analysis, media generation, system monitoring, and automatic provider fallback.</p></article><article><b>04</b><h3>Ride Guide</h3><p>A mobile-first amusement park platform offering ride discovery, QR tickets, queue monitoring, payments, visitor management, and operational analytics.</p></article><article><b>05</b><h3>SafeGuard SOS</h3><p>A community emergency-alert application that broadcasts a user’s identity and live GPS location to nearby registered users and trusted emergency contacts.</p></article><article><b>06</b><h3>ShopFloor</h3><p>A browser-based shop-floor management dashboard for tracking sales orders, labour assignments, employee hours, operational costs, and performance reports.</p></article><article><b>07</b><h3>Accident Fatality Analysis</h3><p>A machine-learning study using exploratory data analysis and Bayesian Ridge regression to examine relationships between fatalities, speed, alcohol, time, and accident severity.</p></article><article><b>08</b><h3>Customer Segmentation Dashboard</h3><p>A K-Means and Power BI solution that groups customers into VIP, high-value, regular, and low-value segments for targeted retention and marketing decisions.</p></article><article><b>09</b><h3>Sales &amp; Revenue Analytics</h3><p>An interactive dashboard that imports CSV or Excel sales data and visualizes revenue, profit, products, categories, regions, and performance trends.</p></article><article><b>10</b><h3>Neural Face Swap Studio</h3><p>A Flask-based computer-vision application using ONNX models and OpenCV to detect faces, swap them, and blend the generated results naturally.</p></article><article><b>11</b><h3>The Last Signal</h3><p>A browser-based survival horror game where players manage limited health, power, sanity, and communication resources while attempting to transmit a final signal.</p></article></div></div>
+      </section>
+
+      <section class="panel detail-panel metrics-panel" data-start="0.63" data-end="0.72">
+        <header class="page-head"><span>08</span><p>Achievements</p></header>
+        <div class="wide-title"><h2>My Journey<br /><span class="metrics-display-title signature-script">in numbers</span></h2></div>
+                <div class="metric-grid"><div><strong>8+</strong><span>Completed Projects</span></div><div><strong>15+</strong><span>Certificates</span></div><div><strong>1</strong><span>Professional Internship</span></div><div><strong>10+</strong><span>Workshops</span></div><div><strong>30+</strong><span>Technical Skills</span></div><div><strong>3</strong><span>Hackathons</span></div></div>
+      </section>
+
+      <section class="panel detail-panel certificates-panel" id="certificates" data-start="0.70" data-end="0.79">
+        <header class="page-head"><span>09</span><p>Certificates</p></header>
+        <div class="detail-title certificate-heading"><h2>Proof of<br /><em class="signature-script">practice.</em></h2><p>A hands-on record of AI, analytics, programming, workshops, and community learning. Drag the orbit or use the arrow keys to explore.</p></div>
+        <div class="orbit-carousel" aria-roledescription="carousel" aria-label="Infinite certificate gallery">
+          <div class="orbit-viewport" tabindex="0">
+            <div class="orbit-track">
+              <button class="orbit-card" data-title="AI–Machine Learning Engineer" data-issuer="Skill India · Reliance Foundation"><img src="Screenshot 2026-07-28 213843.png" alt="" loading="lazy" draggable="false"><span><b>AI–Machine Learning Engineer</b><small>Skill India · Reliance Foundation</small></span></button>
+              <button class="orbit-card" data-title="AI–Machine Learning Engineer" data-issuer="Reliance Foundation Skilling Academy"><img src="Screenshot 2026-07-28 213908.png" alt="" loading="lazy" draggable="false"><span><b>AI–Machine Learning Engineer</b><small>Reliance Foundation Skilling Academy</small></span></button>
+              <button class="orbit-card" data-title="Data Analytics Internship" data-issuer="Thiranex"><img src="Screenshot 2026-07-28 213925.png" alt="" loading="lazy" draggable="false"><span><b>Data Analytics Internship</b><small>Thiranex</small></span></button>
+              <button class="orbit-card" data-title="Freshers’ Party Night Edition" data-issuer="Google Student Ambassador Program"><img src="Screenshot 2026-07-28 213940.png" alt="" loading="lazy" draggable="false"><span><b>Freshers’ Party Night Edition</b><small>Google Student Ambassador Program</small></span></button>
+              <button class="orbit-card" data-title="Music Night Edition" data-issuer="Google Student Ambassador Program"><img src="Screenshot 2026-07-28 214020.png" alt="" loading="lazy" draggable="false"><span><b>Music Night Edition</b><small>Google Student Ambassador Program</small></span></button>
+              <button class="orbit-card" data-title="Microsoft Excel Productivity &amp; Data Analysis" data-issuer="Sri Shakthi Institute of Engineering and Technology"><img src="Screenshot 2026-07-28 214041.png" alt="" loading="lazy" draggable="false"><span><b>Microsoft Excel Productivity &amp; Data Analysis</b><small>Sri Shakthi Institute of Engineering and Technology</small></span></button>
+              <button class="orbit-card" data-title="HTML Tutorial Module" data-issuer="Scaler Topics"><img src="Screenshot_20260721_225923.jpg" alt="" loading="lazy" draggable="false"><span><b>HTML Tutorial Module</b><small>Scaler Topics</small></span></button>
+              <button class="orbit-card" data-title="Python Course for Beginners" data-issuer="Scaler Topics"><img src="Screenshot_20260721_225931.jpg" alt="" loading="lazy" draggable="false"><span><b>Python Course for Beginners</b><small>Scaler Topics</small></span></button>
+              <button class="orbit-card" data-title="Introduction to LLMs with Open-Source Tools" data-issuer="Google Student Ambassador Program"><img src="Screenshot_20260721_225935.jpg" alt="" loading="lazy" draggable="false"><span><b>Introduction to LLMs with Open-Source Tools</b><small>Google Student Ambassador Program</small></span></button>
+              <button class="orbit-card" data-title="SMART IQ+" data-issuer="Aaruchudar"><img src="Screenshot_20260721_230025.jpg" alt="" loading="lazy" draggable="false"><span><b>SMART IQ+</b><small>Aaruchudar</small></span></button>
+              <button class="orbit-card" data-title="Generative AI for Innovation" data-issuer="LinkedIn Learning"><img src="Screenshot_20260721_230033.jpg" alt="" loading="lazy" draggable="false"><span><b>Generative AI for Innovation</b><small>LinkedIn Learning</small></span></button>
+              <button class="orbit-card" data-title="Implementing a Data Strategy for Responsible AI" data-issuer="LinkedIn Learning"><img src="Screenshot_20260721_230036.jpg" alt="" loading="lazy" draggable="false"><span><b>Implementing a Data Strategy for Responsible AI</b><small>LinkedIn Learning</small></span></button>
+              <button class="orbit-card" data-title="Introduction to GitHub Administration" data-issuer="Microsoft Learn"><img src="Achievements - kamaleshj-8422 _ Microsoft Learn_page-0001.jpg" alt="" loading="lazy" draggable="false"><span><b>Introduction to GitHub Administration</b><small>Microsoft Learn</small></span></button>
+              <button class="orbit-card" data-title="HackDevengers 1.0" data-issuer="Devengers · Unstop"><img src="certificate-hackdevengers-1.jpeg" alt="Certificate of participation awarded to Kamalesh J for HackDevengers 1.0" loading="lazy" draggable="false"><span><b>HackDevengers 1.0</b><small>Devengers · Unstop</small></span></button>
+              <button class="orbit-card" data-title="Adobe University Hackathon" data-issuer="Adobe · Unstop"><img src="certificate-adobe-university-hackathon.jpeg" alt="Certificate of participation awarded to Kamalesh J for the Adobe University Hackathon" loading="lazy" draggable="false"><span><b>Adobe University Hackathon</b><small>Adobe · Unstop</small></span></button>
+            </div>
+            <i class="orbit-fade orbit-fade--left"></i><i class="orbit-fade orbit-fade--right"></i>
+          </div>
+          <div class="orbit-caption" aria-live="polite"><strong class="orbit-count">01 / 15</strong><div><h3 class="orbit-title">AI–Machine Learning Engineer</h3><p class="orbit-issuer">Skill India · Reliance Foundation</p></div><small>Drag to explore · Arrow keys to glide</small></div>
+        </div>
+      </section>
+
+      <section class="panel detail-panel cta-panel github-panel" data-start="0.77" data-end="0.86">
+        <header class="page-head"><span>10</span><p>GitHub</p></header>
+        <div class="github-layout">
+          <div class="github-intro"><p class="kicker">10 / OPEN SOURCE LOG</p><h2>Explore My<br /><em class="signature-script">Development Work.</em></h2><p>Discover repositories, experiments, AI applications, Flutter projects, and data-analytics work in one evolving build log.</p><a href="https://github.com/kamaleshjk102007-dot" target="_blank" rel="noopener noreferrer">View GitHub Profile <i>↗</i></a></div>
+          <section class="github-dashboard" aria-label="GitHub development overview">
+            <div class="github-dashboard__top"><div><span>BUILD ACTIVITY</span><strong>Contribution graph</strong></div><small>LIVE PROFILE READY</small></div>
+            <div class="github-heatmap" aria-label="Contribution activity visualisation"><i></i><i class="hot"></i><i></i><i class="warm"></i><i></i><i class="hot"></i><i></i><i class="warm"></i><i></i><i></i><i class="hot"></i><i></i><i class="warm"></i><i></i><i class="hot"></i><i></i><i></i><i class="warm"></i><i></i><i class="hot"></i><i></i><i class="warm"></i><i></i><i></i><i class="hot"></i><i></i><i class="warm"></i><i></i><i class="hot"></i><i></i><i></i><i class="warm"></i><i></i><i class="hot"></i><i></i><i class="warm"></i><i></i><i></i><i class="hot"></i><i></i><i class="warm"></i><i></i><i class="hot"></i><i></i></div>
+            <div class="github-metrics"><div><b>REPOS</b><strong>Public repositories</strong></div><div><b>STACK</b><strong>Top languages</strong></div><div><b>STARS</b><strong>Repository stars</strong></div></div>
+            <div class="github-dashboard__bottom"><div><span>PYTHON</span><i style="--level:88%"></i></div><div><span>JAVASCRIPT</span><i style="--level:64%"></i></div><div><span>DART</span><i style="--level:48%"></i></div></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel detail-panel cta-panel" data-start="0.84" data-end="0.93">
+        <header class="page-head"><span>11</span><p>Resume</p></header>
+        <div class="cta-content"><h2>Want to Know<br />More About Me?</h2><p>View my education, technical skills, project experience, internship, certifications, and achievements.</p><h3>Resume:</h3><div class="action-row"><a class="featured-repo-button resume-pill-button" href="output/pdf/Kamalesh-J-Resume.pdf" target="_blank" rel="noopener" aria-label="Open Kamalesh J resume in a new tab"><span>View Resume</span><i aria-hidden="true">↗</i></a><a class="featured-repo-button resume-pill-button" href="output/pdf/Kamalesh-J-Resume.pdf" download="Kamalesh-J-Resume.pdf" aria-label="Download Kamalesh J resume PDF"><span>Download Resume</span><i aria-hidden="true">↗</i></a></div><p class="placeholder">Resume PDF ready to view or download.</p></div>
+      </section>
+
+      <section class="panel detail-panel contact-panel" id="contact" data-start="0.91" data-end="1.065">
+        <header class="page-head"><span>12</span><p>Contact</p></header>
+        <div class="contact-layout">
+          <div class="contact-intro"><h2>Let’s Build Something<br /><em class="signature-script">Intelligent Together</em></h2><p>I’m interested in opportunities involving Artificial Intelligence, Machine Learning, Computer Vision, Flutter development, full-stack development, and data analytics.</p><ul><li><b>Name</b> Kamalesh J</li><li><b>Location</b> Madurai, Tamil Nadu</li><li><b>Email</b> <a href="mailto:kamaleshjk102007@gmail.com">kamaleshjk102007@gmail.com</a></li><li><b>LinkedIn</b> <a href="https://www.linkedin.com/in/kamalesh-j-b48421336/" target="_blank" rel="noopener noreferrer">kamalesh-j-b48421336</a></li><li><b>GitHub</b> <a href="https://github.com/kamaleshjk102007-dot" target="_blank" rel="noopener noreferrer">kamaleshjk102007-dot</a></li></ul></div>
+          <form class="contact-form"><div class="form-row"><label><span>Your name</span><input name="name" autocomplete="name" placeholder="Your name" required></label><label><span>Your email</span><input type="email" name="email" autocomplete="email" placeholder="Your email" required></label></div><label><span>Subject</span><input name="subject" placeholder="Subject" required></label><label><span>Your message</span><textarea name="message" placeholder="Your message" required></textarea></label><button class="depth-button" type="submit"><span class="depth-button__face"><span class="action-label">Send Message</span><span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" /></svg></span></span></button><p class="form-status" aria-live="polite"></p></form>
+          <div class="contact-visual"><img src="contact-laptop-transparent.png" alt="Red-lit developer laptop displaying a code symbol"></div>
+        </div>
+        <footer class="contact-footer"><strong>KJ <span>Kamalesh J</span></strong><p>© 2026 Kamalesh J. All rights reserved.</p><small>Built with <i>♥</i> and lots of AI</small></footer>
+      </section>
+    </main>
+    <script src="script.js?v=connected-panel-links-10"></script>
+  </body>
+</html>
