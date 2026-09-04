@@ -3921,3 +3921,39 @@ h2 {
 
 
 @media (max-width:760px){.skill-console__tabs button{font-size:10.5px!important;min-height:62px!important}}
+
+/* Smooth, low-jank touch scrolling for the responsive experience. */
+@media (max-width:760px){
+  html,body{scroll-behavior:smooth;overscroll-behavior-x:none}
+  .panel{scroll-behavior:smooth;scroll-padding-top:calc(78px + env(safe-area-inset-top));overscroll-behavior-x:none;-webkit-overflow-scrolling:touch}
+}
+@media (prefers-reduced-motion:reduce){html,body,.panel{scroll-behavior:auto!important}}
+
+/* Mobile project catalogue and reliable touch navigation. */
+@media (max-width:760px){
+  .dynamic-nav{z-index:500;pointer-events:auto}
+  .dynamic-nav__pill,.dynamic-nav__eyes,.dynamic-nav__links,.dynamic-nav__links a{pointer-events:auto}
+  .projects-panel .project-hover-list,.projects-panel .project-stage,.projects-panel .projects-toggle{display:none!important}
+  .projects-panel .project-carousel{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:auto!important;overflow:visible!important;transform:none!important}
+  .projects-panel .project-grid{display:grid!important;grid-template-columns:1fr!important;gap:12px!important;width:100%!important;height:auto!important;overflow:visible!important}
+  .projects-panel .project-grid article{display:flex!important;flex-direction:column!important;width:100%!important;height:auto!important;min-height:0!important;padding:14px!important;border:1px solid rgba(239,32,59,.36)!important;border-radius:16px!important;background:linear-gradient(145deg,rgba(28,6,11,.94),rgba(5,4,5,.94))!important;color:#fff!important;box-shadow:0 12px 30px rgba(0,0,0,.3)!important}
+  .projects-panel .showcase-media{height:150px!important;min-height:150px!important;border-radius:11px!important}
+  .projects-panel .project-card-head{margin-top:12px!important}
+  .projects-panel .project-grid article>p{display:block!important;margin:12px 0!important;color:rgba(255,255,255,.74)!important;font-size:12px!important;line-height:1.5!important}
+  .projects-panel .project-tech{display:flex!important;margin-top:auto!important}
+  .projects-panel .project-grid footer{display:flex!important;min-height:46px!important;margin-top:12px!important;padding-top:10px!important}
+  .projects-panel .project-card-link{min-height:44px;display:inline-flex;align-items:center;color:#fff!important}
+}
+
+/* Final phone spacing and readable project-card content order. */
+@media (max-width:760px){
+  .projects-panel{padding:calc(82px + env(safe-area-inset-top)) var(--mobile-gutter) calc(28px + env(safe-area-inset-bottom))!important}
+  .projects-panel>.page-head{display:flex!important;position:relative!important;inset:auto!important;margin:0 0 10px!important}
+  .projects-panel>.project-section-title{display:flex!important;position:relative!important;inset:auto!important;width:100%!important;margin:0 0 18px!important;transform:none!important}
+  .projects-panel>.project-section-title h2{font-size:clamp(38px,12vw,58px)!important;line-height:.9!important}
+  .projects-panel .showcase-media{position:relative!important;inset:auto!important;order:0}
+  .projects-panel .project-card-head{position:relative!important;inset:auto!important;order:1}
+  .projects-panel .project-grid article>p{position:static!important;inset:auto!important;order:2;transform:none!important}
+  .projects-panel .project-tech{position:relative!important;inset:auto!important;order:3}
+  .projects-panel .project-grid footer{position:relative!important;inset:auto!important;order:4}
+}

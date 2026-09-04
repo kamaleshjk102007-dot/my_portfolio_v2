@@ -5,6 +5,7 @@ const framePath = (frame) =>
   `ezgif-243d03533d6dd1f2-jpg/ezgif-frame-${String(frame).padStart(3, "0")}.jpg`;
 
 const frames = new Array(frameCount);
+const mobileMotionQuery = matchMedia("(max-width: 760px), (pointer: coarse)");
 const panels = [...document.querySelectorAll(".panel")];
 const dynamicNav = document.querySelector(".dynamic-nav");
 const navPill = document.querySelector(".dynamic-nav__pill");
@@ -133,7 +134,9 @@ function preloadFrames() {
 }
 
 function resize() {
-  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  // Keep mobile frame rendering crisp without paying the full desktop 2x canvas cost.
+  const ratioCap = mobileMotionQuery.matches ? 1.35 : 2;
+  const ratio = Math.min(window.devicePixelRatio || 1, ratioCap);
   canvas.width = Math.round(innerWidth * ratio);
   canvas.height = Math.round(innerHeight * ratio);
   lastDrawnFrame = -1;
@@ -198,9 +201,9 @@ function setNavOpen(isOpen) {
   navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
 }
 navToggle.addEventListener("click", () => setNavOpen(!dynamicNav.classList.contains("is-open")));
-navPill.addEventListener("pointerenter", () => setNavOpen(true));
-navPill.addEventListener("pointerleave", () => { navCloseTimer = setTimeout(() => setNavOpen(false), 350); });
-dynamicNav.addEventListener("focusin", () => setNavOpen(true));
+const hoverNavQuery = matchMedia("(hover: hover) and (pointer: fine)");
+navPill.addEventListener("pointerenter", () => { if (hoverNavQuery.matches) setNavOpen(true); });
+navPill.addEventListener("pointerleave", () => { if (hoverNavQuery.matches) navCloseTimer = setTimeout(() => setNavOpen(false), 350); });
 dynamicNav.addEventListener("focusout", () => { navCloseTimer = setTimeout(() => { if (!dynamicNav.contains(document.activeElement)) setNavOpen(false); }, 0); });
 
 function scrollToPanel(panelIndex, behavior = "smooth", updateHistory = false, hash = "") {
@@ -362,16 +365,15 @@ document.querySelectorAll(".project-grid article").forEach((card) => {
   card.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); toggleProjectCard(); } });
 });
 
-document.querySelectorAll(".project-grid article").forEach((card) => {
-  const title = card.querySelector("h3")?.textContent.trim();
-  if (title === "EDITH AI" || title === "ShopFloor") card.remove();
-});
+
 const projectCards = [...document.querySelectorAll(".project-grid article")];
 const projectRepoUrls = [
   "https://github.com/kamaleshjk102007-dot/sentinal_V1",
   "https://github.com/kamaleshjk102007-dot/sentinal_V2",
+  "https://github.com/kamaleshjk102007-dot/edith",
   "https://github.com/kamaleshjk102007-dot/ride_guide",
   "https://github.com/kamaleshjk102007-dot/safe",
+  "https://github.com/kamaleshjk102007-dot/shop_floor",
   "https://github.com/kamaleshjk102007-dot/accident",
   "https://github.com/kamaleshjk102007-dot/Customer-Segmentation-Dashboard",
   "https://github.com/kamaleshjk102007-dot/Sales-Revenue-Analytics",
@@ -383,14 +385,24 @@ projectCards.forEach((card) => {
   card.addEventListener("pointerleave", () => card.classList.remove("is-hovered"));
 });
 const projectMeta = [
-  ["Smart Online Exam Monitoring",["YOLOv8","Webcam","Alerts"]], ["AI-Powered Proctoring System",["YOLOv11","MediaPipe","FastAPI"]], ["Mobile-First Amusement Park Platform",["QR Tickets","Payments","Analytics"]], ["Community Emergency Alert Network",["Live GPS","Alerts","Community"]], ["Machine-Learning Safety Study",["EDA","Bayesian Ridge","Analytics"]], ["Customer Intelligence Dashboard",["K-Means","Power BI","Retention"]], ["Interactive Business Dashboard",["CSV / Excel","Revenue","Trends"]], ["Neural Computer-Vision Studio",["Flask","ONNX","OpenCV"]], ["Browser Survival Horror Game",["Health","Power","Sanity"]]
+  ["Smart Online Exam Monitoring",["YOLOv8","Webcam","Alerts"]],
+  ["AI-Powered Proctoring System",["YOLOv11","MediaPipe","FastAPI"]],
+  ["Multi-Agent AI Assistant",["Python","React","Gemini"]],
+  ["Mobile-First Amusement Park Platform",["QR Tickets","Payments","Analytics"]],
+  ["Community Emergency Alert Network",["Live GPS","Alerts","Community"]],
+  ["AI Workforce Management",["Flutter","Gemini","MongoDB"]],
+  ["Machine-Learning Safety Study",["EDA","Bayesian Ridge","Analytics"]],
+  ["Customer Intelligence Dashboard",["K-Means","Power BI","Retention"]],
+  ["Interactive Business Dashboard",["CSV / Excel","Revenue","Trends"]],
+  ["Neural Computer-Vision Studio",["Flask","ONNX","OpenCV"]],
+  ["Browser Survival Horror Game",["Health","Power","Sanity"]]
 ];
 const projectIcons = [
   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.4 8.3-8 10-4.6-1.7-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-4"/></svg>',
   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.7"/></svg>',
   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19v-5M10 19V9M15 19v-8M20 19V5"/><path d="m4 10 5-4 4 3 7-6"/></svg>'
 ];
-const projectStats = [[23,7],[31,9],[18,5],[16,4],[14,3],[22,6],[19,4],[17,5],[12,3]];
+const projectStats = [[23,7],[31,9],[28,8],[18,5],[16,4],[26,7],[14,3],[22,6],[19,4],[17,5],[12,3]];
 projectCards.forEach((card,index) => {
   card.dataset.projectIndex = String(index + 1).padStart(2, "0");
   const number = card.querySelector("b");
@@ -438,12 +450,21 @@ projectsToggle.addEventListener("click", () => {
   });
 });
 
+const mobileProjectsQuery = matchMedia("(max-width: 760px)");
+function syncProjectVisibility() {
+  const mobile = mobileProjectsQuery.matches;
+  const expanded = projectsToggle.getAttribute("aria-expanded") === "true";
+  projectCards.forEach((card, index) => { card.hidden = mobile ? false : !expanded && index > 2; });
+  projectsToggle.hidden = mobile;
+}
+syncProjectVisibility();
+mobileProjectsQuery.addEventListener?.("change", syncProjectVisibility);
 const projectStage = document.createElement("div");
 projectStage.className = "project-stage";
 projectStage.innerHTML = `
   <div class="project-stage__visual" role="img" aria-label="Project artwork">
     <div class="project-stage__shade"></div>
-    <div class="project-stage__counter"><span>01</span><small>/ 09</small></div>
+    <div class="project-stage__counter"><span>01</span><small>/ ${String(projectCards.length).padStart(2, "0")}</small></div>
     <div class="project-stage__copy">
       <p class="project-stage__kind"></p>
       <h2></h2>
@@ -509,7 +530,7 @@ updateProjectStage(0);
 
 const hoverProjectList = document.createElement("div");
 hoverProjectList.className = "project-hover-list";
-hoverProjectList.innerHTML = '<header><p>07 / 09 MORE PROJECTS</p><h2>Remaining <em>builds.</em></h2></header><div class="project-hover-list__rows"></div><aside class="project-hover-preview" aria-live="polite"></aside>';
+hoverProjectList.innerHTML = `<header><p>07 / ${String(projectCards.length).padStart(2, "0")} PROJECTS</p><h2>All <em>builds.</em></h2></header><div class="project-hover-list__rows"></div><aside class="project-hover-preview" aria-live="polite"></aside>`;
 projectStage.before(hoverProjectList);
 const hoverRows = hoverProjectList.querySelector(".project-hover-list__rows");
 const hoverPreview = hoverProjectList.querySelector(".project-hover-preview");
@@ -523,7 +544,7 @@ function updateHoverPreview(index) {
   hoverPreview.innerHTML = `
     <div class="project-hover-preview__image" role="img" aria-label="${title} project artwork"></div>
     <div class="project-hover-preview__content">
-      <p class="project-hover-preview__number">${String(index + 1).padStart(2, "0")} / 09</p>
+      <p class="project-hover-preview__number">${String(index + 1).padStart(2, "0")} / ${String(projectCards.length).padStart(2, "0")}</p>
       <h3>${title}</h3>
       <p>${description}</p>
       <div>${projectMeta[index][1].map((tag) => `<small>${tag}</small>`).join("")}</div>
@@ -587,7 +608,8 @@ function updateTarget() {
 
 function animate() {
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  displayFrame += (targetFrame - displayFrame) * (reducedMotion ? 1 : 0.115);
+  const smoothing = mobileMotionQuery.matches ? 0.18 : 0.115;
+  displayFrame += (targetFrame - displayFrame) * (reducedMotion ? 1 : smoothing);
   const frame = Math.max(0, Math.min(frameCount - 1, Math.round(displayFrame)));
   const progress = displayFrame / (frameCount - 1);
 
@@ -604,6 +626,10 @@ function animate() {
 
 addEventListener("scroll", updateTarget, { passive: true });
 addEventListener("resize", resize, { passive: true });
+mobileMotionQuery.addEventListener?.("change", () => {
+  resize();
+  updateTarget();
+});
 
 preloadFrames();
 resize();
