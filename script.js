@@ -5,6 +5,7 @@ const framePath = (frame) =>
   `ezgif-243d03533d6dd1f2-jpg/ezgif-frame-${String(frame).padStart(3, "0")}.jpg`;
 
 const frames = new Array(frameCount);
+const mobileLayoutQuery = matchMedia("(max-width: 760px)");
 const mobileMotionQuery = matchMedia("(max-width: 760px), (pointer: coarse)");
 const panels = [...document.querySelectorAll(".panel")];
 const dynamicNav = document.querySelector(".dynamic-nav");
@@ -165,6 +166,46 @@ function panelVisibility(progress, start, end) {
 }
 
 function updatePanels(progress) {
+  if (mobileLayoutQuery.matches) {
+    const viewportAnchor = innerHeight * 0.34;
+    let activeIndex = 0;
+    let closestDistance = Infinity;
+
+    panels.forEach((panel, index) => {
+      panel.style.setProperty("--reveal", "1");
+      panel.style.setProperty("--shift", "0px");
+      panel.style.opacity = "1";
+      panel.style.transform = "none";
+      panel.classList.add("is-interactive");
+      panel.setAttribute("aria-hidden", "false");
+
+      const bounds = panel.getBoundingClientRect();
+      const distance = viewportAnchor < bounds.top
+        ? bounds.top - viewportAnchor
+        : viewportAnchor > bounds.bottom
+          ? viewportAnchor - bounds.bottom
+          : 0;
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        activeIndex = index;
+      }
+    });
+
+    if (metricsPanel) {
+      const bounds = metricsPanel.getBoundingClientRect();
+      updateMetricCounters(bounds.top < innerHeight * 0.72 && bounds.bottom > innerHeight * 0.28);
+    }
+
+    navItems.forEach((item) => {
+      const isActive = Number(item.dataset.panel) === activeIndex;
+      item.classList.toggle("is-active", isActive);
+      if (isActive) item.setAttribute("aria-current", "page");
+      else item.removeAttribute("aria-current");
+    });
+    const activeLink = navItems.find((item) => Number(item.dataset.panel) === activeIndex);
+    if (activeLink && location.hash !== activeLink.hash) history.replaceState(null, "", activeLink.hash);
+    return;
+  }
   let activeIndex = 0;
   let closestDistance = Infinity;
   panels.forEach((panel) => {
@@ -209,6 +250,13 @@ dynamicNav.addEventListener("focusout", () => { navCloseTimer = setTimeout(() =>
 function scrollToPanel(panelIndex, behavior = "smooth", updateHistory = false, hash = "") {
   const panel = panels[panelIndex];
   if (!panel) return;
+
+  if (mobileLayoutQuery.matches) {
+    const resolvedBehavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : behavior;
+    panel.scrollIntoView({ behavior: resolvedBehavior, block: "start" });
+    if (updateHistory && hash && location.hash !== hash) history.pushState(null, "", hash);
+    return;
+  }
 
   const scrollRange = document.documentElement.scrollHeight - innerHeight;
   const panelCenter = (Number(panel.dataset.start) + Number(panel.dataset.end)) / 2;
@@ -450,7 +498,7 @@ projectsToggle.addEventListener("click", () => {
   });
 });
 
-const mobileProjectsQuery = matchMedia("(max-width: 760px)");
+const mobileProjectsQuery = mobileLayoutQuery;
 function syncProjectVisibility() {
   const mobile = mobileProjectsQuery.matches;
   const expanded = projectsToggle.getAttribute("aria-expanded") === "true";
@@ -630,6 +678,7 @@ mobileMotionQuery.addEventListener?.("change", () => {
   resize();
   updateTarget();
 });
+mobileLayoutQuery.addEventListener?.("change", updateTarget);
 
 preloadFrames();
 resize();

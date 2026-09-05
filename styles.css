@@ -3957,3 +3957,27 @@ h2 {
   .projects-panel .project-tech{position:relative!important;inset:auto!important;order:3}
   .projects-panel .project-grid footer{position:relative!important;inset:auto!important;order:4}
 }
+
+/* Phones use natural document flow so no section content can be trapped. */
+@media (max-width:760px){
+  html,body{height:auto!important;min-height:0!important}
+  .content{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;pointer-events:auto!important}
+  .panel,.panel[aria-hidden="true"]{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:100vh!important;min-height:100svh!important;overflow:visible!important;opacity:1!important;transform:none!important;pointer-events:auto!important;scroll-margin-top:64px}
+  .panel+.panel{border-top:1px solid rgba(239,32,59,.16)}
+}
+
+/* Clip wide decorative art without creating nested vertical scrollers. */
+@media (max-width:760px){html,body,.content,.panel{max-width:100%!important;overflow-x:clip!important}.detail-panel::after{display:none!important}}
+
+/* Narrow-phone safety: keep navigation and full project dossiers inside the visual viewport. */
+@media (max-width:760px){
+  html,body{min-width:0!important;width:100%!important}
+  .dynamic-nav{left:50%!important;width:auto!important;max-width:calc(100vw - 24px)!important;transform:translateX(-50%)!important}
+  .dynamic-nav__links{box-sizing:border-box!important;left:50%!important;right:auto!important;width:min(340px,calc(100vw - 24px))!important;max-width:calc(100vw - 24px)!important}
+  .project-panel .project-dossier,.project-dossier__copy,.project-dossier__columns{height:auto!important;max-height:none!important}
+  .project-dossier__copy,.project-dossier__columns{overflow:visible!important}
+}
+@media (max-width:360px){
+  .dynamic-nav__links{width:calc(100vw - 24px)!important;grid-template-columns:1fr!important;gap:6px!important;max-height:calc(100svh - 86px)!important;padding:10px!important}
+  .dynamic-nav__links a{justify-content:flex-start!important;width:100%!important;padding:0 16px!important;text-align:left!important;white-space:normal!important}
+}
