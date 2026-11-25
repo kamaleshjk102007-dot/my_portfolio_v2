@@ -4132,3 +4132,6 @@ h2 {
   .certificates-panel .orbit-caption h3 { margin: 0 0 5px; font-size: clamp(16px, 4.5vw, 21px); line-height: 1.15; overflow-wrap: anywhere; }
   .certificates-panel .orbit-caption p { font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
 }
+
+/* Match the outlined hero typography in the resume heading. */
+.cta-content h2 .cta-heading-outline { color: transparent; -webkit-text-stroke: 1.5px #817b7c; text-shadow: none; }
