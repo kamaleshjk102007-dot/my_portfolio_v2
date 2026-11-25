@@ -17,6 +17,7 @@ const pupils = [...document.querySelectorAll(".pupil")];
 const orbitViewport = document.querySelector(".orbit-viewport");
 const orbitTrack = document.querySelector(".orbit-track");
 const metricsPanel = document.querySelector(".metrics-panel");
+const metricGrid = metricsPanel?.querySelector(".metric-grid");
 const metricCounters = metricsPanel
   ? [...metricsPanel.querySelectorAll(".metric-grid strong")].map((counter) => {
       const match = counter.textContent.trim().match(/^(\d+)(.*)$/);
@@ -32,19 +33,20 @@ let metricsAnimationId = 0;
 
 function setMetricValues(progress = 0) {
   metricCounters.forEach(({ counter, value, suffix }) => {
-    counter.textContent = `${Math.round(value * progress)}${suffix}`;
+    counter.textContent = `${progress >= 1 ? value : Math.floor(value * progress)}${suffix}`;
   });
 }
 
 function animateMetricCounters() {
   const animationId = ++metricsAnimationId;
+  setMetricValues(0);
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
     setMetricValues(1);
     return;
   }
 
   const startedAt = performance.now();
-  const duration = 1100;
+  const duration = 1600;
   const tick = (now) => {
     if (animationId !== metricsAnimationId || !metricsAreActive) return;
     const elapsed = Math.min(1, (now - startedAt) / duration);
@@ -191,9 +193,9 @@ function updatePanels(progress) {
       }
     });
 
-    if (metricsPanel) {
-      const bounds = metricsPanel.getBoundingClientRect();
-      updateMetricCounters(bounds.top < innerHeight * 0.72 && bounds.bottom > innerHeight * 0.28);
+    if (metricGrid) {
+      const bounds = metricGrid.getBoundingClientRect();
+      updateMetricCounters(bounds.top < innerHeight * 0.9 && bounds.bottom > innerHeight * 0.1);
     }
 
     navItems.forEach((item) => {
@@ -674,6 +676,11 @@ function animate() {
 
 addEventListener("scroll", updateTarget, { passive: true });
 addEventListener("resize", resize, { passive: true });
+addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+  updateMetricCounters(false);
+  updatePanels(displayFrame / (frameCount - 1));
+});
 mobileMotionQuery.addEventListener?.("change", () => {
   resize();
   updateTarget();
