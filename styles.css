@@ -4134,4 +4134,4 @@ h2 {
 }
 
 /* Match the outlined hero typography in the resume heading. */
-.cta-content h2 .cta-heading-outline { color: transparent; -webkit-text-stroke: 1.5px #817b7c; text-shadow: none; }
+.cta-content h2 .cta-heading-outline { color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7); text-shadow: none; }
