@@ -585,6 +585,19 @@ projectStage.before(hoverProjectList);
 const hoverRows = hoverProjectList.querySelector(".project-hover-list__rows");
 const hoverPreview = hoverProjectList.querySelector(".project-hover-preview");
 
+const projectHighlights = [
+  "Webcam analysis · Object detection · Violation alerts",
+  "Live monitoring · Risk assessment · Automated reports",
+  "Voice interaction · Document analysis · Provider fallback",
+  "Ride discovery · QR tickets · Queue monitoring",
+  "Emergency alerts · Live GPS · Trusted contacts",
+  "Sales orders · Labour assignments · Performance reports",
+  "Exploratory analysis · Bayesian Ridge regression · Accident factors",
+  "K-Means clustering · Customer groups · Power BI dashboard",
+  "CSV and Excel import · Revenue trends · Regional analysis",
+  "Face detection · ONNX inference · Image blending",
+  "Survival gameplay · Resource management · Final signal"
+];
 function updateHoverPreview(index) {
   const card = projectCards[index];
   const title = card.querySelector("h3").textContent;
@@ -597,7 +610,8 @@ function updateHoverPreview(index) {
       <p class="project-hover-preview__number">${String(index + 1).padStart(2, "0")} / ${String(projectCards.length).padStart(2, "0")}</p>
       <h3>${title}</h3>
       <p>${description}</p>
-      <div>${projectMeta[index][1].map((tag) => `<small>${tag}</small>`).join("")}</div>
+      <p class="project-hover-preview__highlights"><strong>Key features</strong><br>${projectHighlights[index]}</p>
+      <div class="project-hover-preview__tags">${projectMeta[index][1].map((tag) => `<small>${tag}</small>`).join("")}</div>
     </div>`;
 }
 
@@ -613,7 +627,8 @@ projectCards.forEach((card, index) => {
     <div class="project-hover-row__text">
       <h3>${card.querySelector("h3").textContent}</h3>
       <p>${card.querySelector(":scope > p").textContent}</p>
-      <div>${projectMeta[index][1].map((tag) => `<small>${tag}</small>`).join("")}</div>
+
+      <div class="project-hover-preview__tags">${projectMeta[index][1].map((tag) => `<small>${tag}</small>`).join("")}</div>
     </div>
     <div class="project-hover-row__image" role="img" aria-label="${card.querySelector("h3").textContent} project artwork"></div>
     <a class="project-hover-row__icon" href="${projectRepoUrls[index]}" target="_blank" rel="noopener noreferrer" aria-label="Open ${rowTitle} repository on GitHub">↗</a>`;
